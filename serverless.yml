@@ -1,0 +1,16 @@
+service: todo-app
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ap-south-1
+  
+
+functions:
+  todoApp:
+    handler: index.handler
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
